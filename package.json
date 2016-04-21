@@ -1,0 +1,20 @@
+{
+  "name": "react-d3",
+  "version": "1.0.0",
+  "description": "Demo application showcasing react & d3",
+  "main": "src/main.jsx",
+  "scripts": {
+    "compile": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "Shantanu Raj <s@sraj.me>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
