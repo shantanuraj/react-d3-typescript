@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Component } from 'react'
 import * as d3 from 'd3'
 
-interface Props extends JSX.IntrinsicClassAttributes<App> {
+interface Props {
   width: number
   height: number
   data: any
