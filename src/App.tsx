@@ -11,10 +11,12 @@ interface Props {
   }
 }
 
+interface Refs {
+  mountPoint?: HTMLDivElement
+}
+
 class App extends Component<Props, {}> {
-  ctrls: {
-    mountPoint?: HTMLDivElement
-  } = {}
+  ctrls: Refs = {}
 
   componentDidMount() {
     const { width, height, data } = this.props
