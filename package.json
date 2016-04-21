@@ -5,7 +5,8 @@
   "main": "src/main.jsx",
   "scripts": {
     "compile": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "production": "NODE_ENV=production webpack -p"
   },
   "author": "Shantanu Raj <s@sraj.me>",
   "license": "Apache 2.0",
