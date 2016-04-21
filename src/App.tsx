@@ -12,6 +12,10 @@ interface Props {
 }
 
 class App extends Component<Props, {}> {
+  ctrls: {
+    mountPoint?: HTMLDivElement
+  } = {}
+
   componentDidMount() {
     const { width, height, data } = this.props
     const force = d3.layout.force()
@@ -21,8 +25,7 @@ class App extends Component<Props, {}> {
                     .nodes(data.nodes)
                     .links(data.links)
 
-    const mountPoint: any = this.refs['mountPoint']
-    const svg = d3.select(mountPoint)
+    const svg = d3.select(this.ctrls.mountPoint)
                   .append('svg')
                   .attr('width', width)
                   .attr('height', height)
@@ -68,7 +71,7 @@ class App extends Component<Props, {}> {
       height,
       backgroundColor: '#333'
     }
-    return <div style={style} ref="mountPoint" />
+    return <div style={style} ref={mountPoint => this.ctrls.mountPoint = mountPoint} />
   }
 }
 
