@@ -5,7 +5,10 @@ import * as d3 from 'd3'
 interface Props {
   width: number
   height: number
-  data: any
+  data: {
+    nodes: {name: string, group: number}[]
+    links: {source: number, target: number, value: number}[]
+  }
 }
 
 class App extends Component<Props, {}> {
@@ -30,7 +33,7 @@ class App extends Component<Props, {}> {
                     .append('line')
                     .style('stroke', '#999999')
                     .style('stroke-opacity', 0.6)
-                    .style('stroke-width', (d: any) => Math.sqrt(d.value))
+                    .style('stroke-width', d => Math.sqrt(d.value))
 
     const color = d3.scale.category20()
     const node = svg.selectAll('circle')
@@ -51,8 +54,8 @@ class App extends Component<Props, {}> {
         .attr('y2', (d: any) => d.target.y)
 
       node
-        .attr('cx', d => d['x'])
-        .attr('cy', d => d['y']);
+        .attr('cx', (d: any) => d.x)
+        .attr('cy', (d: any) => d.y)
     })
 
     force.start()
