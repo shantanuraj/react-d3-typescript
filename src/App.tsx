@@ -63,7 +63,7 @@ class App extends Component<Props, {}> {
     const style = {
       width,
       height,
-      border: '1px solid #323232'
+      backgroundColor: '#333'
     }
     return <div style={style} ref="mountPoint" />
   }

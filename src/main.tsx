@@ -5,4 +5,10 @@ import * as ReactDOM from 'react-dom'
 
 import data from './data'
 
-ReactDOM.render(<App width={400} height={330} data={data} />, document.getElementById('app'))
+ReactDOM.render(
+  <App
+    width={window.screen.availWidth}
+    height={window.screen.availHeight}
+    data={data} />,
+  document.getElementById('app')
+)
