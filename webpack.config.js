@@ -1,7 +1,7 @@
 module.exports = {
   entry: './src/main.tsx',
   output: {
-    filename: './build/main.js'
+    filename: 'main.js'
   },
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
