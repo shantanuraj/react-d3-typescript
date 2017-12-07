@@ -1,5 +1,7 @@
 const { join } = require('path');
 
+const webpack = require('webpack');
+
 module.exports = {
   entry: './src/main.tsx',
   output: {
@@ -9,6 +11,13 @@ module.exports = {
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: process.env.NODE_ENV === 'production' ? '"production"' : '"development"',
+      },
+    }),
+  ],
   devServer: {
     inline: true,
     port: 1337
