@@ -8,7 +8,7 @@
     "trailingComma": "all"
   },
   "lint-staged": {
-    "src/**/{*.ts,*.tsx}": ["prettier --write", "npm run production", "git add build/main.js", "git add"]
+    "src/**/{*.ts,*.tsx}": ["prettier --write", "NODE_ENV=production yarn production", "git add build/main.js", "git add"]
   },
   "main": "src/main.tsx",
   "scripts": {
