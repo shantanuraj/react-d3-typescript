@@ -24,7 +24,7 @@ class App extends Component<Props, {}> {
                     .charge(-120)
                     .linkDistance(50)
                     .size([width, height])
-                    .nodes(data.nodes)
+                    .nodes(data.nodes as any)
                     .links(data.links)
 
     const svg = d3.select(this.ctrls.mountPoint)
