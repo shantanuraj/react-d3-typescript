@@ -2,7 +2,7 @@
   "name": "react-d3",
   "version": "1.0.0",
   "description": "Demo application showcasing react & d3",
-  "main": "src/main.jsx",
+  "main": "src/main.tsx",
   "scripts": {
     "compile": "webpack",
     "start": "webpack-dev-server",
