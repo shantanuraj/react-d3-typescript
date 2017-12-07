@@ -8,7 +8,6 @@ module.exports = {
   },
   devServer: {
     inline: true,
-    contentBase: './build',
     port: 1337
   },
   module: {
