@@ -15,11 +15,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "outDir": "build"
     },
-    "exclude": [
-        "node_modules",
-        "typings/main",
-        "typings/main.d.ts"
-    ],
+    "exclude": ["node_modules"],
     "compileOnSave": true,
     "buildOnSave": false,
     "atom": {

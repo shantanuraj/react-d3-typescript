@@ -20,12 +20,12 @@ class App extends Component<Props, {}> {
 
   componentDidMount() {
     const { width, height, data } = this.props
-    const force = d3.layout.force()
-                    .charge(-120)
-                    .linkDistance(50)
-                    .size([width, height])
-                    .nodes(data.nodes)
-                    .links(data.links)
+
+    const force = d3.forceSimulation()
+      .force('charge', d3.forceManyBody().strength(-120))
+      .force('link', d3.forceLink(data.links).distance(50))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .nodes(data.nodes)
 
     const svg = d3.select(this.ctrls.mountPoint)
                   .append('svg')
@@ -40,7 +40,7 @@ class App extends Component<Props, {}> {
                     .style('stroke-opacity', 0.6)
                     .style('stroke-width', d => Math.sqrt(d.value))
 
-    const color = d3.scale.category20()
+    const color = d3.scaleOrdinal(d3.schemeCategory20)
     const node = svg.selectAll('circle')
                     .data(data.nodes)
                     .enter()
@@ -49,7 +49,6 @@ class App extends Component<Props, {}> {
                     .style('stroke', '#FFFFFF')
                     .style('stroke-width', 1.5)
                     .style('fill', (d: any) => color(d.group))
-                    .call(force.drag)
 
     force.on('tick', () => {
       link
@@ -62,8 +61,6 @@ class App extends Component<Props, {}> {
         .attr('cx', (d: any) => d.x)
         .attr('cy', (d: any) => d.y)
     })
-
-    force.start()
   }
 
   render() {
