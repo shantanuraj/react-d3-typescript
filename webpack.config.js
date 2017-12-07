@@ -20,11 +20,9 @@ module.exports = {
   ],
   devServer: {
     inline: true,
-    port: 1337
+    port: 1337,
   },
   module: {
-    rules: [
-      { test: /\.tsx?$/, use: 'ts-loader' }
-    ]
-  }
-}
+    rules: [{ test: /\.tsx?$/, use: 'ts-loader' }],
+  },
+};
