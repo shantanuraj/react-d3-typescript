@@ -43,16 +43,40 @@ class App extends Component<Props, {}> {
       .style('stroke-opacity', 0.6)
       .style('stroke-width', d => Math.sqrt(d.value));
 
+    function dragStarted(d) {
+      !d3.event.active && force.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function dragEnded(d) {
+      !d3.event.active && force.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
     const color = d3.scaleOrdinal(d3.schemeCategory20);
     const node = svg
       .selectAll('circle')
       .data(data.nodes)
       .enter()
-      .append('circle')
+      .append<SVGCircleElement>('circle')
       .attr('r', 5)
       .style('stroke', '#FFFFFF')
       .style('stroke-width', 1.5)
-      .style('fill', (d: any) => color(d.group));
+      .style('fill', (d: any) => color(d.group))
+      .call(
+        d3
+          .drag()
+          .on('start', dragStarted)
+          .on('drag', dragged)
+          .on('end', dragEnded),
+      );
 
     force.on('tick', () => {
       link
